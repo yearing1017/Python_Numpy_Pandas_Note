@@ -1,7 +1,7 @@
 # Python_Note
 ⏰ 记录不熟悉的、遗忘的Python3知识点
 
-## Python3的格式化输出
+## 1. Python3的格式化输出
 - 在Python中，采用的格式化方式和C语言是一致的，用%实现，举例如下：
 ```python
 >>> 'Hello, %s' % 'world'
@@ -43,4 +43,86 @@ print('%.2f' % 3.1415926)
 ```python
 >>> 'Hello, {0}, 成绩提升了 {1:.1f}%'.format('小明', 17.125)
 'Hello, 小明, 成绩提升了 17.1%'
+```
+## 2. Python3的With语句
+
+- 本栏将总结`with`语句的知识点及原理
+
+### 2.1 with与文件相关
+
+- 在读写文件的时候，需要加上**异常处理**操作，如下代码所示：
+
+```python
+try:
+    fileReader = open('students.txt', 'r')
+
+    for row in fileReader:
+        print(row.strip())
+except:
+    print('Read file failed')
+finally:
+    fileReader.close()
+```
+
+- 上述**异常处理**操作非常繁琐，上述可以使用with语句来代替。
+- `with`语句适用于对资源进行访问的场合，**确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如文件使用后自动关闭、线程中锁的自动获取和释放等**。
+- 比如上面的代码，通过使用`with`语句改造，就变成了下面这个样子：
+
+```python
+with open('students.txt', 'r') as fileReader:
+    for row in fileReader:
+        print(row.strip())
+```
+
+### 2.2 with语句原理
+
+- 要搞清楚`with`语句的原理，先要看一下这几个概念：
+  - **上下文管理协议（Context Management Protocol）**：包含方法 `__enter__()`和`__exit__()`，支持该协议的对象要实现这两个方法。
+  - **上下文管理器（Context Manager）**：支持上下文管理协议的对象，这种对象实现了`__enter__()`和`__exit__()`方法。上下文管理器定义执行`with`语句时要建立的运行时上下文，负责执行`with`语句块上下文中的进入与退出操作。通常使用`with`语句调用上下文管理器，也可以通过直接调用其方法来使用。
+- 一段基本的with语句块如下所示：
+
+```python
+with EXPR as VAR:
+    BLOCK
+```
+
+- 其中**EXPR可以是任意表达式；as VAR是可选的**。其一般的执行过程是这样的：
+
+  - **执行EXPR**，生成上下文管理器context_manager；
+  - **获取上下文管理器的`__exit()__`方法**，并保存起来用于之后的调用；
+  - **调用上下文管理器的`__enter__()`方法**；如果使用了`as`子句，则将`__enter__()`方法的返回值赋值给`as`子句中的VAR；
+  - **执行BLOCK中的表达式；**
+  - 不管是否执行过程中是否发生了异常，执行上下文管理器的`__exit__()`方法，`__exit__()`方法负责执行“清理”工作，如释放资源等。如果执行过程中没有出现异常，或者语句体中执行了语句`break/continue/return`，则以`None`作为参数调用`__exit__(None, None, None)`；如果执行过程中出现异常，则使用`sys.exc_info`得到的异常信息为参数调用`__exit__(exc_type, exc_value, exc_traceback)`；
+  - 出现异常时，如果`__exit__(type, value, traceback)`返回False，则会重新抛出异常，让`with`之外的语句逻辑来处理异常，这也是通用做法；如果返回True，则忽略异常，不再对异常进行处理。
+
+- **自定义实现上下文管理器**
+
+  学完了`with`语句的内在原理，接下来我们就可以按照这个原理，实现我们自己的上下文管理器。自定义的上下文管理器要实现上下文管理协议所需要的`__enter__()`和`__exit__()`两个方法：
+
+```python
+class DBManager(object):
+    def __init__(self):
+        pass
+
+    def __enter__(self):
+        print('__enter__')
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print('__exit__')
+        return True
+
+def getInstance():
+        return DBManager()
+
+with getInstance() as dbManagerIns:
+    print('with demo')
+```
+
+- 代码运行结果
+
+```python
+__enter__
+with demo
+__exit__
 ```
