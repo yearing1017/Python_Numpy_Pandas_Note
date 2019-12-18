@@ -1,6 +1,5 @@
-# Python_Note
-⏰ 记录不熟悉的、遗忘的Python3知识点
-
+# Python_Numpy_Pandas_Note
+⏰ 记录遗忘的Python3、numpy、pandas等知识点
 ## 1. Python3的格式化输出
 - 在Python中，采用的格式化方式和C语言是一致的，用%实现，举例如下：
 ```python
