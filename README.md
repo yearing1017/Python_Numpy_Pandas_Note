@@ -252,7 +252,95 @@ argmin: axis=1
 - 在shape中加None，相当于加了一个新的维度，但是没有新的数值插入，仅仅多了表示维度的`[`和`]`
 
 ## 2. Numpy对ndarry的一些操作
-- 
+
+- 看代码：
+```python
+# 仿照列表排序
+A = np.arange(14,2,-1).reshape((3,4)) # -1表示反向递减一个步长
+print(A)
+# 输出
+[[14 13 12 11]
+ [10  9  8  7]
+ [ 6  5  4  3]]
+ 
+print(np.sort(A))
+# 输出
+[[11 12 13 14]
+ [ 7  8  9 10]
+ [ 3  4  5  6]]
+ 
+# 矩阵转置，或print(A.T)
+print(np.transpose(A))
+# 输出
+[[14 10  6]
+ [13  9  5]
+ [12  8  4]
+ [11  7  3]]
+ 
+# clip函数
+print(np.clip(A,5,9))
+# 输出
+[[9 9 9 9]
+ [9 9 8 7]
+ [6 5 5 5]]
+'''
+clip(Array,Array_min,Array_max)
+
+将Array_min<X<Array_max X表示矩阵A中的数，如果满足上述关系，则原数不变。
+
+否则，如果X<Array_min，则将矩阵中X变为Array_min;
+
+如果X>Array_max，则将矩阵中X变为Array_max.
+'''
+```
+
+## 3. Numpy的索引和切片
+- 看代码：
+```python
+import numpy as np
+A = np.arange(3,15)
+B = A.reshape(3,4)
+print(B)
+# B
+[[ 3  4  5  6]
+ [ 7  8  9 10]
+ [11 12 13 14]]
+ 
+print(B[2])
+# B[2]
+[11 12 13 14]
+
+print(B[0][2]) #B[0][2]和B[0,2]等价，打印都是5
+
+# list切片操作
+print(B[1,1:3]) # [8 9] 1:3表示1-2不包含3
+
+
+for row in B:
+    print(row)
+# 输出
+[3 4 5 6]
+[ 7  8  9 10]
+[11 12 13 14]
+
+# 如果要打印列，则进行转置即可
+for column in B.T:
+    print(column)
+# 输出
+[ 3  7 11]
+[ 4  8 12]
+[ 5  9 13]
+[ 6 10 14]
+
+# 多维转一维
+A = np.arange(3,15).reshape((3,4))
+# print(A)
+print(A.flatten())
+# flat是一个迭代器，本身是一个object属性
+[ 3  4  5  6  7  8  9 10 11 12 13 14]
+
+
+```
 
 
 
