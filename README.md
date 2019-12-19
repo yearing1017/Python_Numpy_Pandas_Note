@@ -338,10 +338,9 @@ A = np.arange(3,15).reshape((3,4))
 print(A.flatten())
 # flat是一个迭代器，本身是一个object属性
 [ 3  4  5  6  7  8  9 10 11 12 13 14]
-
-
 ```
-
+- 一些常见的切片如下图所示，每种颜色对应结果：
+![numpy](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/images/qiepian.jpg)
 
 
 
