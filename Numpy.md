@@ -317,3 +317,45 @@ print(c)
 [[0 1 2 3 0 1 2 3]
  [4 5 6 7 4 5 6 7]]
 ```
+
+## 5. Numpy copy与=
+- =赋值方式会带有关联性
+```python
+import numpy as np
+# `=`赋值方式会带有关联性
+a = np.arange(4)
+print(a) # [0 1 2 3]
+
+b = a
+c = a
+d = b
+a[0] = 11
+print(a) # [11  1  2  3]
+
+print(b) # [11  1  2  3]
+
+print(c) # [11  1  2  3]
+
+print(d) # [11  1  2  3]
+
+print(b is a) # True
+
+print(c is a) # True
+
+print(d is a) # True
+```
+
+- copy()赋值方式没有关联性
+```python
+a = np.arange(4)
+print(a) # [0 1 2 3]
+
+b =a.copy() # deep copy
+print(b) # [0 1 2 3]
+
+a[3] = 44
+print(a) # [ 0  1  2 44]
+print(b) # [0 1 2 3]
+
+# 此时a与b已经没有关联
+```
