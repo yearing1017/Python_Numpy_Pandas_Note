@@ -210,3 +210,110 @@ print(A.flatten())
 ```
 - 一些常见的切片如下图所示，每种颜色对应结果：
 ![numpy](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/images/qiepian.jpg)
+
+## 4. Numpy array合并
+- 数组合并
+```python
+import numpy as np
+A = np.array([1,1,1])
+B = np.array([2,2,2])
+print(np.vstack((A,B)))
+# vertical stack 上下合并,对括号的两个整体操作。
+# 输出
+[[1 1 1]
+ [2 2 2]]
+
+print(A.shape,B.shape,C.shape)# 从shape中看出A,B均为拥有3项的数组(数列)
+# 输出 (3,) (3,) (2, 3)
+
+# horizontal stack左右合并
+D = np.hstack((A,B))
+print(D) # [1 1 1 2 2 2]
+print(A.shape,B.shape,D.shape) # # (3,) (3,) (6,)
+# 对于A,B这种，为数组或数列，无法进行转置，需要借助其他函数进行转置
+```
+
+- 数组转置为矩阵
+```python
+print(A[np.newaxis,:]) # [1 1 1]变为[[1 1 1]]
+print(A[np.newaxis,:].shape) # (3,)变为(1, 3)
+print(A[:,np.newaxis])
+# 输出如下：
+[[1]
+ [1]
+ [1]]
+```
+
+- 多个矩阵合并
+```python
+print(A[:,np.newaxis].shape) # (3,1)
+
+A = A[:,np.newaxis] # 数组转为矩阵
+B = B[:,np.newaxis] # 数组转为矩阵
+print(A)
+# 输出
+[[1]
+ [1]
+ [1]]
+print(B)
+# 输出
+[[2]
+ [2]
+ [2]]
+
+# axis=0纵向合并
+C = np.concatenate((A,B,B,A),axis=0)
+print(C)
+# 输出
+[[1]
+ [1]
+ [1]
+ [2]
+ [2]
+ [2]
+ [2]
+ [2]
+ [2]
+ [1]
+ [1]
+ [1]]
+
+# axis=1横向合并
+C = np.concatenate((A,B),axis=1)
+print(C)
+# 输出
+[[1 2]
+ [1 2]
+ [1 2]]
+ 
+# concatenate的第二个例子
+print("-------------")
+a = np.arange(8).reshape(2,4)
+b = np.arange(8).reshape(2,4)
+print(a)
+print(b)
+print("-------------")
+# 输出
+-------------
+[[0 1 2 3]
+ [4 5 6 7]]
+[[0 1 2 3]
+ [4 5 6 7]]
+-------------
+
+# axis=0多个矩阵纵向合并
+c = np.concatenate((a,b),axis=0)
+print(c)
+# 输出
+[[0 1 2 3]
+ [4 5 6 7]
+ [0 1 2 3]
+ [4 5 6 7]]
+
+# axis=1多个矩阵横向合并
+c = np.concatenate((a,b),axis=1)
+print(c)
+# 输出
+[[0 1 2 3 0 1 2 3]
+ [4 5 6 7 4 5 6 7]]
+```
