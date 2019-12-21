@@ -2,6 +2,7 @@
 ⏰ 记录遗忘的Python3、numpy、pandas等知识点
 
 ## 💡 Python3 相关知识
+- 笔记链接：[Python3.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Python3.md)
 
 ###  1. Python3的格式化输出
 - 回顾了python的格式化输出问题，包括使用占位符和format()两种方式的用法。
@@ -12,6 +13,7 @@
 
 
 # 💡 Numpy 相关知识
+- 笔记链接：[Numpy.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Numpy.md)
 
 ###  1. 有关`np.argmin/argmax`在axis维度上的认识
 - 两个方法的使用、返回的类型、axis维度的认识。
@@ -24,3 +26,4 @@
 
 
 # 💡 Pandas 相关知识
+- 笔记链接：[Pandas.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Pandas.md)
