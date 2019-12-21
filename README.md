@@ -24,6 +24,11 @@
 ###  3. Numpy的索引和切片
 - 一些常用的切片操作
 
+###  4. Numpy array_矩阵合并
+- array的合并、array到矩阵、矩阵的合并
+
+###  5. Numpy copy和=
+- 直接=赋值和copy方式的区别
 
 # 💡 Pandas 相关知识
 - 笔记链接：[Pandas.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Pandas.md)
