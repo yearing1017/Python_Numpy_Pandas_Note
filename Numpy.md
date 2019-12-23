@@ -396,4 +396,4 @@ print(a+b)
     [7 7 7]]
    ```
 - 一幅图中的例子：
-
+![numpy](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/images/numpy.jpg)
