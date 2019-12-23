@@ -30,5 +30,8 @@
 ###  5. Numpy copy和=
 - 直接=赋值和copy方式的区别
 
+###  6. Numpy的广播机制
+- 在数组维度不同时如何计算
+
 # 💡 Pandas 相关知识
 - 笔记链接：[Pandas.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Pandas.md)
