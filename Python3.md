@@ -262,7 +262,7 @@ for xmlPath in glob.glob(xmlPath + "/*/*"):
 #解释：遍历指定文件夹下的所有文件夹里的所有文件，/*/*可以根据文件夹层数自主设定
   
 img_path = sorted(glob.glob(os.path.join(images, '*.npy')))
-#解释：遍历文件夹下所有npy文件,存到一个list中
+#解释：遍历文件夹下所有npy文件,存到一个list中。sorted方法可对列表进行排序，文件名按照字典排序。
  
 import glob
 #获取指定目录下的所有图片
@@ -270,3 +270,5 @@ print glob.glob(r"E:/Picture/*/*.jpg")
 #获取上级目录的所有.py文件
 print glob.glob(r'../*.py') #相对路径
 ```
+
+## 5. 
