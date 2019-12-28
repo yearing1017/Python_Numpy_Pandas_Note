@@ -271,4 +271,49 @@ print glob.glob(r"E:/Picture/*/*.jpg")
 print glob.glob(r'../*.py') #相对路径
 ```
 
-## 5. 
+## 5. assert的用法
+- python的断言机制，一般的用法是：`assert condition`
+- 等效于：
+`if not condition:
+   raise AssertionError()`
+- assert可用于程序的初识阶段，判断某先决条件，若不满足，就不需要进行下去，跳出异常。
+
+## 6. zip的用法
+- 用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的对象
+- 在 Python 3.x 中为了减少内存，zip() 返回的是一个对象。如需展示列表，需手动 list() 转换。
+- 如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用 * 号操作符，可以将元组解压为列表。
+- 实例：
+```python
+>>>a = [1,2,3]
+>>> b = [4,5,6]
+>>> c = [4,5,6,7,8]
+>>> zipped = zip(a,b)           # 返回一个对象
+>>> zipped
+<zip object at 0x103abc288>
+>>> list(zipped)                # list() 转换为列表
+[(1, 4), (2, 5), (3, 6)]
+>>> list(zip(a,c))              # 元素个数与最短的列表一致
+[(1, 4), (2, 5), (3, 6)]
+ 
+>>> a1, a2 = zip(*zip(a,b))     # 与 zip 相反，zip(*) 可理解为解压，返回二维矩阵式
+>>> list(a1)
+[1, 2, 3]
+>>> list(a2)
+[4, 5, 6]
+>>>
+```
+- 遍历：
+```python
+a = [1,2,3]
+b = [4,5,6]
+for num_1, num_2 in zip(a,b):
+    print(num_1)
+    print(num_2)
+# 输出
+1
+4
+2
+5
+3
+6
+```
