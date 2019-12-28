@@ -246,3 +246,27 @@ __func() is run!
 zhangsan
 ```
 - 放入__all__中所有属性均可导入，即使是以下划线开头
+
+## 4.  glob的使用
+- glob可以查找符合特定规则的文件路径名，使用该模块查找文件，只需要用到： “\*”, “?”, “[]”这三个匹配符
+    - ”\*”匹配0个或多个字符；
+    - ”?”匹配单个字符；
+    - ”[]”匹配指定范围内的字符，如：[0-9]匹配数字.
+- glob.glob用法：返回所有匹配的文件路径列表。它只有一个参数pathname，定义了文件路径匹配规则，这里可以是绝对路径，也可以是相对路径。
+- 下面是使用glob.glob的例子：
+```python
+for xmlPath in glob.glob('/media/ai1/DATAPART11/LIDC-IDRI' +"/*"):
+#解释：遍历指定文件夹下所有文件或文件夹
+ 
+for xmlPath in glob.glob(xmlPath + "/*/*"):
+#解释：遍历指定文件夹下的所有文件夹里的所有文件，/*/*可以根据文件夹层数自主设定
+  
+img_path = sorted(glob.glob(os.path.join(images, '*.npy')))
+#解释：遍历文件夹下所有npy文件,存到一个list中
+ 
+import glob
+#获取指定目录下的所有图片
+print glob.glob(r"E:/Picture/*/*.jpg")
+#获取上级目录的所有.py文件
+print glob.glob(r'../*.py') #相对路径
+```
