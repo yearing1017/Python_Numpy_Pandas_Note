@@ -397,3 +397,13 @@ print(a+b)
    ```
 - 一幅图中的例子：
 ![numpy](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/images/numpy.jpg)
+
+
+## 7. PIL的Image转为numpy的array
+- 使用Image读取图像并进行转换
+```python
+   label_name = os.listdir('data/dataset1/annotations_prepped_train')[idx]
+   label = Image.open('data/dataset1/annotations_prepped_train/' + label_name)
+   label = np.array(label)
+   label_arr = label.flatten() #一维化数据
+```
