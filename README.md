@@ -46,5 +46,7 @@
 ###  6. Numpy的广播机制
 - 在数组维度不同时如何计算
 
+###  7. PIL的Image转为numpy的array
+
 # 💡 Pandas 相关知识
 - 笔记链接：[Pandas.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Pandas.md)
