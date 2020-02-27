@@ -48,5 +48,8 @@
 
 ###  7. PIL的Image转为numpy的array
 
+###  8. numpy计算MIoU等指标—基于混淆矩阵
+- 记录numpy对矩阵的几种操作
+
 # 💡 Pandas 相关知识
 - 笔记链接：[Pandas.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Pandas.md)
