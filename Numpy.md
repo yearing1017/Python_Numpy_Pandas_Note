@@ -407,3 +407,67 @@ print(a+b)
    label = np.array(label)
    label_arr = label.flatten() #一维化数据
 ```
+
+## 8.numpy计算MIoU等指标——基于混淆矩阵
+- `np.diag`：取矩阵的对角线元素
+- `np.nanmean`：用于求含有nan值的数组的平均值
+- `np.trace`：求矩阵的迹，即对角线元素之和
+- `np.dot`：求两个矩阵的积，若为一维，则为内积；若为二维，则为标准矩阵乘积
+
+- 代码如下：
+```python
+import numpy as np
+class Evaluator(object):
+    def __init__(self, num_class):
+        self.num_class = num_class
+        self.confusion_matrix = np.zeros((self.num_class,)*2)
+    # 求像素准确率
+    def Pixel_Accuracy(self):
+        Acc = np.diag(self.confusion_matrix).sum() / self.confusion_matrix.sum()
+        return Acc
+    # 求类别像素准确率
+    def Pixel_Accuracy_Class(self):
+        Acc = np.diag(self.confusion_matrix) / self.confusion_matrix.sum(axis=1)
+        #Acc = np.nanmean(Acc)
+        return Acc
+    # 求miou
+    def Mean_Intersection_over_Union(self):
+        MIoU = np.diag(self.confusion_matrix) / (
+                    np.sum(self.confusion_matrix, axis=1) + np.sum(self.confusion_matrix, axis=0) -
+                    np.diag(self.confusion_matrix))
+        MIoU = np.nanmean(MIoU)
+        return MIoU
+
+    def Frequency_Weighted_Intersection_over_Union(self):
+        freq = np.sum(self.confusion_matrix, axis=1) / np.sum(self.confusion_matrix)
+        iu = np.diag(self.confusion_matrix) / (
+                    np.sum(self.confusion_matrix, axis=1) + np.sum(self.confusion_matrix, axis=0) -
+                    np.diag(self.confusion_matrix))
+
+        FWIoU = (freq[freq > 0] * iu[freq > 0]).sum()
+        return FWIoU
+    # 求kappa系数
+    def kappa(self):
+        pe_rows = np.sum(self.confusion_matrix, axis=0)
+        pe_cols = np.sum(self.confusion_matrix, axis=1)
+        sum_total = sum(pe_cols)
+        pe = np.dot(pe_rows, pe_cols) / float(sum_total ** 2)
+        # np.trace求矩阵的迹，即对角线的和
+        po = np.trace(self.confusion_matrix) / float(sum_total)
+        return (po - pe) / (1 - pe)
+    # 生成混淆矩阵
+    def _generate_matrix(self, gt_image, pre_image):
+        mask = (gt_image >= 0) & (gt_image < self.num_class)
+        label = self.num_class * gt_image[mask].astype('int') + pre_image[mask]
+        count = np.bincount(label, minlength=self.num_class**2)
+        confusion_matrix = count.reshape(self.num_class, self.num_class)
+        return confusion_matrix
+    # 混淆矩阵相加 
+    def add_batch(self, gt_image, pre_image):
+        assert gt_image.shape == pre_image.shape
+        self.confusion_matrix += self._generate_matrix(gt_image, pre_image)
+    # 重置
+    def reset(self):
+        self.confusion_matrix = np.zeros((self.num_class,) * 2)
+
+```
