@@ -334,3 +334,8 @@ for num_1, num_2 in zip(a,b):
     - 对象所在的容器被销毁，或从容器中删除对象
 - 有三种情况会触发垃圾回收： 1. 调⽤gc.collect(), 2. 当gc模块的计数器达到阀值的时候。 3. 程序退出的时候
 - gc.collect() 显式进⾏垃圾回收，可打印出收回垃圾对象的数量。
+
+## 8. UnboundLocalError: local variable 'xxx' referenced before assignment
+- 局部变量‘xxx’前边没有定义错误
+- 在函数外部定义的变量`xxx`若在函数内部进行修改，则需使用global关键字，否则报错
+- 详见[错误例示](https://www.cnblogs.com/kaituorensheng/p/4764078.html)
