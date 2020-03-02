@@ -25,6 +25,9 @@
 ### 7. python3的gc模块
 - 简单学习了解了gc模块进行垃圾回收，以及引用计数的原理。
 
+### 8. UnboundLocalError: local variable 'xxx' referenced before assignment
+- 全局变量及glabal关键字示例使用
+
 # 💡 Numpy 相关知识
 - 笔记链接：[Numpy.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Numpy.md)
 
