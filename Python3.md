@@ -339,3 +339,26 @@ for num_1, num_2 in zip(a,b):
 - 局部变量‘xxx’前边没有定义错误
 - 在函数外部定义的变量`xxx`若在函数内部进行修改，则需使用global关键字，否则报错
 - 详见[错误例示](https://www.cnblogs.com/kaituorensheng/p/4764078.html)
+
+
+## 9. list的append和extend方法的区别
+
+- list.append(object) 向列表中添加一个对象object。
+- 使用append的时候，是将参数看作一个对象，整体作为一个元素打包添加到指定列表。
+
+- list.extend(iterable) 把一个可迭代对象的内容迭代添加到列表中。
+- 使用extend是将一个可迭代对象中的每个元素逐个地添加到列表中，可迭代对象中有几个元素，添加后的列表就比原列表多几个元素。
+
+```python
+L1 = [1, 2, 3]
+L2 = [1, 2, 3]
+a = [4]
+L1.append(a)
+L2.extend(a)
+print(L1)
+print(L2)
+
+# 输出
+[1, 2, 3, [4]]
+[1, 2, 3, 4]
+```
