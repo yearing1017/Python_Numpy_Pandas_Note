@@ -362,3 +362,15 @@ print(L2)
 [1, 2, 3, [4]]
 [1, 2, 3, 4]
 ```
+
+## 10. list的insert函数
+- insert() 函数用于将指定对象插入列表的指定位置。
+- 语法：`list.insert(index, obj)`
+```python
+aList = [123, 'xyz', 'zara', 'abc']
+aList.insert( 3, 2009)
+print "Final List : ", aList
+
+# result
+Final List : [123, 'xyz', 'zara', 2009, 'abc']
+```
