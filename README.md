@@ -28,6 +28,9 @@
 ### 8. UnboundLocalError: local variable 'xxx' referenced before assignment
 - 全局变量及glabal关键字示例使用
 
+### 9. list的append和extend方法的区别
+- append()和extend()当参数为一个数字(参数限制为一个)时，效果无区别；但当参数为一个列表时，二者就有区别
+
 # 💡 Numpy 相关知识
 - 笔记链接：[Numpy.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Numpy.md)
 
