@@ -34,6 +34,9 @@
 ### 10. list的insert函数
 - 指定插入list某位置一个值
 
+### 11. list中[::-1]切片知识小结
+- 掌握形如[:-1]和[::-1]的list切片使用
+
 # 💡 Numpy 相关知识
 - 笔记链接：[Numpy.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Numpy.md)
 
