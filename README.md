@@ -37,6 +37,9 @@
 ### 11. list中[::-1]切片知识小结
 - 掌握形如[:-1]和[::-1]的list切片使用
 
+### 12. python模块和包的导入
+- [模块导入细节](https://www.cnblogs.com/f-ck-need-u/p/9955485.html)
+
 # 💡 Numpy 相关知识
 - 笔记链接：[Numpy.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Numpy.md)
 
