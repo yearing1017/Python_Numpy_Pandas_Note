@@ -39,6 +39,7 @@
 
 ### 12. python模块和包的导入
 - [模块导入细节](https://www.cnblogs.com/f-ck-need-u/p/9955485.html)
+- [包的导入细节](https://www.cnblogs.com/f-ck-need-u/p/9961372.html)
 
 # 💡 Numpy 相关知识
 - 笔记链接：[Numpy.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Numpy.md)
