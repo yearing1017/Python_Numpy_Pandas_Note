@@ -41,6 +41,9 @@
 - [模块导入细节](https://www.cnblogs.com/f-ck-need-u/p/9955485.html)
 - [包的导入细节](https://www.cnblogs.com/f-ck-need-u/p/9961372.html)
 
+### 13. list的pop函数
+- pop函数用于取出list的某数，默认为最后一个
+
 # 💡 Numpy 相关知识
 - 笔记链接：[Numpy.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Numpy.md)
 
