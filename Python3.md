@@ -384,3 +384,19 @@ Final List : [123, 'xyz', 'zara', 2009, 'abc']
     - 所以a[i:j:1]相当于a[i:j]
     - 当s<0时，i缺省时，默认为-1. j缺省时，默认为-len(a)-1
     - 所以a[::-1]相当于 a[-1:-len(a)-1:-1]，也就是从最后一个元素到第一个元素复制一遍，即倒序。
+    
+## 12. list的pop函数
+- pop() 函数用于移除列表中的一个元素（默认最后一个元素），并且返回该元素的值。
+- 以下实例展示了 pop()函数的使用方法：
+```python
+#!/usr/bin/python3
+#coding=utf-8
+ 
+list1 = ['Google', 'Runoob', 'Taobao']
+list_pop=list1.pop(1)
+print "删除的项为 :", list_pop
+print "列表现在为 : ", list1
+
+#删除的项为 : Runoob
+#列表现在为 :  ['Google', 'Taobao']
+```
