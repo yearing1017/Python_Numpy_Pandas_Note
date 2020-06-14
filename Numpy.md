@@ -471,3 +471,21 @@ class Evaluator(object):
         self.confusion_matrix = np.zeros((self.num_class,) * 2)
 
 ```
+
+### 9. numpy中(4,)和(4,1)的区别
+- 代码：
+```python
+>>>import numpy as np
+>>>a=np.array([0,1,2,3])
+>>>b=np.array([[0],[1],[2],[3]])
+>>>c=np.array([[0,1,2,3]])
+>>>a.shape
+(4,)
+>>>b.shape
+(4, 1)
+>>>c.shape
+(1, 4)
+```
+- a.shape说明数组a的维数是1，其中有4个元素
+- b.shape说明数组b的维数是2，每行1个元素，有4行
+- c.shape说明数组c的维数是2，每行4个元素，有1行
