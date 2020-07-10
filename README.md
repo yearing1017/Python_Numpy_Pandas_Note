@@ -45,7 +45,10 @@
 - pop函数用于取出list的某数，默认为最后一个
 
 ### 14. Python函数传参中的 \* 与 \*\*
-- 记录了在调用和定义函数时，使用\* 和\*\*的含义 
+- 记录了在调用和定义函数时，使用\* 和\*\*的含义
+
+### 15. Python交换两数
+- 记录一种简单的交换两数的方式
 
 # 💡 Numpy 相关知识
 - 笔记链接：[Numpy.md](https://github.com/yearing1017/Python_Numpy_Pandas_Note/blob/master/Numpy.md)
